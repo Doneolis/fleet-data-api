@@ -5,7 +5,7 @@ RESTful API built with FastAPI to manage and analyze fleet operation data.
 ## Features
 - Create and retrieve trips
 - Store data in PostgreSQL
-- Calculate operational metrics (e.g., total and idle distance)
+- Calculate fleet metrics (total distance, idle distance)
 
 ## Tech Stack
 - Python
@@ -13,7 +13,11 @@ RESTful API built with FastAPI to manage and analyze fleet operation data.
 - PostgreSQL
 - SQLAlchemy
 
-## Running locally
+## Example
 
-```bash
-uvicorn main:app --reload
+```json
+{
+  "truck_id": 1,
+  "distance": 120,
+  "productive": true
+}
