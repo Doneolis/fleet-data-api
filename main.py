@@ -47,3 +47,25 @@ def get_trips():
         return trips
     finally:
         db.close()
+
+
+@app.get("/trips/total-distance")
+def total_distance():
+    db = SessionLocal()
+    try:
+        trips = db.query(TripModel).all()
+        total = sum(trip.distance for trip in trips)
+        return {"total_distance": total}
+    finally:
+        db.close()
+
+
+@app.get("/trips/idle-distance")
+def idle_distance():
+    db = SessionLocal()
+    try:
+        trips = db.query(TripModel).all()
+        idle = sum(trip.distance for trip in trips if not trip.productive)
+        return {"idle_distance": idle}
+    finally:
+        db.close()
